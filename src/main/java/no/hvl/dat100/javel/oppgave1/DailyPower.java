@@ -40,7 +40,7 @@ public class DailyPower {
         return sum;
     }
 
-    // d) compute spot price for a single day!
+    // d) compute spot price for a single day
     public static double computeSpotPrice(double[] usage, double[] prices) {
 
         double price = 0;
