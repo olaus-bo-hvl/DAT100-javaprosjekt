@@ -16,9 +16,12 @@ public class Invoice {
 
 
     public Invoice(Customer c, String month, double[][] usage, double[][] power_prices) {
-
-        // TODO - konstruktør
-
+        this.c = c;
+        this.month = month;
+        this.usage = usage;
+        this.prices = power_prices
+        //er alltid 0 ifølge oppgaven
+        this.amount = 0;
     }
 
     public void computeAmount() {
