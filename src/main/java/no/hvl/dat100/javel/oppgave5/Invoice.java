@@ -25,14 +25,51 @@ public class Invoice {
     }
 
     public void computeAmount() {
+        double total = 0.0;
+        double totalUsage = 0.0;
 
-        // TODO
+        for (int day = 0; day < usage.length; day++) {
+            for (int hour = 0; hour < usage[day].length; hour++) {
+                double used = usage[day][hour];
+                double price = prices[day][hour];
+                total += used * price;
+                totalUsage += used;
+            }
+        }
 
+        String agreement = c.getAgreement();
+        switch (agreement.toUpperCase()) {
+            case "POWERSUPPORT":
+                total *= 0.9; // 10 % rabatt
+                break;
+            case "NORGESPRICE":
+                total = totalUsage * 0.5; // fastpris
+                break;
+            case "SPOTPRICE":
+            default:
+                // ingen endring
+                break;
+    }
+        
+        this.amount = total;
     }
 
     public void printInvoice() {
+        double totalUsage = 0.0;
 
-        // TODO
+        for (int i = 0; i < usage.length; i++) {
+            for (int j = 0; j < usage[i].length; j++) {
+                totalUsage += usage[i][j];
+            }
+        }
 
+        System.out.println("Customer number " + c.getCustomerNumber());
+        System.out.println("Name  " + c.getName());
+        System.out.println("Email " + c.getEmail());
+        System.out.println("Agreement " + c.getAgreement());
+        System.out.println();
+        System.out.println("Month: " + month);
+        System.out.printf("Usage: %10.2f kWh%n", totalUsage);
+        System.out.printf("Amount: %10.2f NOK%n", amount);
     }
 }
