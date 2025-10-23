@@ -17,21 +17,13 @@ public class InvoiceMain {
         Customer c2 = new Customer("Bob Johnson", "bob@example.com", 1002, PowerAgreementType.NORGESPRICE);
         Customer c3 = new Customer("Charlie Rose", "charlie@example.com", 1003, PowerAgreementType.POWERSUPPORT);
 
-        // Simulert bruk og priser (2 dager, 3 timer per dag)
-        double[][] usage = {
-                {1.0, 1.5, 2.0},
-                {0.5, 1.0, 1.5}
-        };
 
-        double[][] prices = {
-                {1.0, 1.0, 1.0},
-                {1.0, 1.0, 1.0}
-        };
+        double[][] prices = MonthPowerData.powerprices_month;
 
         // Faktura for hver avtaletype
-        Invoice i1 = new Invoice(c1, "January", usage, prices);
-        Invoice i2 = new Invoice(c2, "January", usage, prices);
-        Invoice i3 = new Invoice(c3, "January", usage, prices);
+        Invoice i1 = new Invoice(c1, "January", CustomerPowerUsageData.usage_month_customer1, prices);
+        Invoice i2 = new Invoice(c2, "January", CustomerPowerUsageData.usage_month_customer2, prices);
+        Invoice i3 = new Invoice(c3, "January", CustomerPowerUsageData.usage_month_customer3, prices);
 
         // Beregn og skriv ut
         i1.computeAmount();
