@@ -40,7 +40,8 @@ public class Invoice {
         String agreement = c.getAgreement().name();
         switch (agreement.toUpperCase()) {
             case "POWERSUPPORT":
-                total *= 0.9; // 10 % rabatt
+                double support = MonthlyPower.computePowerSupport(usage, prices);
+                total = (total-support); // 10 % rabatt
                 break;
             case "NORGESPRICE":
                 total = totalUsage * 0.5; // fastpris
