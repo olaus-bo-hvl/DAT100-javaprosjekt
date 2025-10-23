@@ -19,7 +19,7 @@ public class Invoice {
         this.c = c;
         this.month = month;
         this.usage = usage;
-        this.prices = power_prices
+        this.prices = power_prices;
         //er alltid 0 ifølge oppgaven
         this.amount = 0;
     }
@@ -37,7 +37,7 @@ public class Invoice {
             }
         }
 
-        String agreement = c.getAgreement();
+        String agreement = c.getAgreement().name();
         switch (agreement.toUpperCase()) {
             case "POWERSUPPORT":
                 total *= 0.9; // 10 % rabatt
@@ -63,7 +63,7 @@ public class Invoice {
             }
         }
 
-        System.out.println("Customer number " + c.getCustomerNumber());
+        System.out.println("Customer number " + c.getCustomer_id());
         System.out.println("Name  " + c.getName());
         System.out.println("Email " + c.getEmail());
         System.out.println("Agreement " + c.getAgreement());
