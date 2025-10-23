@@ -13,12 +13,39 @@ public class InvoiceMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
+        Customer c1 = new Customer("Alice Smith", "alice@example.com", 1001, PowerAgreementType.SPOTPRICE);
+        Customer c2 = new Customer("Bob Johnson", "bob@example.com", 1002, PowerAgreementType.NORGESPRICE);
+        Customer c3 = new Customer("Charlie Rose", "charlie@example.com", 1003, PowerAgreementType.POWERSUPPORT);
 
-         Write code that uses the methods implemented in the Invoice-classes
+        // Simulert bruk og priser (2 dager, 3 timer per dag)
+        double[][] usage = {
+                {1.0, 1.5, 2.0},
+                {0.5, 1.0, 1.5}
+        };
 
-        */
+        double[][] prices = {
+                {1.0, 1.0, 1.0},
+                {1.0, 1.0, 1.0}
+        };
+
+        // Faktura for hver avtaletype
+        Invoice i1 = new Invoice(c1, "January", usage, prices);
+        Invoice i2 = new Invoice(c2, "January", usage, prices);
+        Invoice i3 = new Invoice(c3, "January", usage, prices);
+
+        // Beregn og skriv ut
+        i1.computeAmount();
+        i2.computeAmount();
+        i3.computeAmount();
+
+        System.out.println("=== Faktura for SPOTPRICE ===");
+        i1.printInvoice();
+
+        System.out.println("\n=== Faktura for NORGESPRICE ===");
+        i2.printInvoice();
+
+        System.out.println("\n=== Faktura for POWERSUPPORT ===");
+        i3.printInvoice();
 
     }
 }
